@@ -38,4 +38,4 @@ if (!empty($_POST)) {
     header("Location: index.php");
 }
 
-require_once __DIR__ . "./create.view.php";
+require_once __DIR__ . "./views/create.view.php";

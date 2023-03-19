@@ -58,4 +58,4 @@ if (!empty($_POST)) {
     header("Location: index.php");
 }
 
-require_once __DIR__ . "./edit.view.php";
+require_once __DIR__ . "./views/edit.view.php";

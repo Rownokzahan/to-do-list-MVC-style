@@ -2,7 +2,7 @@
 
 <div class="flex justify-between items-center pb-8">
     <h1 class="text-center text-2xl font-semibold uppercase text-white">To Do List</h1>
-    <a href="./create.php" class="h-fit bg-[#8e40ee] px-5 py-[6px] text-white font-semibold rounded-xl shadow-md">New Task</a>
+    <a href="/create" class="h-fit bg-[#8e40ee] px-5 py-[6px] text-white font-semibold rounded-xl shadow-md">New Task</a>
 </div>
 <div class="overflow-x-auto">
     <table class="table w-full">
@@ -41,10 +41,10 @@
                         <?php echo $task->status; ?>
                     </td>
                     <td>
-                        <a href="edit.php?id=<?= $task->id; ?>" class="bi bi-pencil-square mr-8 text-[#8e40ee] text-xl"></a>
+                        <a href="/edit?id=<?= $task->id; ?>" class="bi bi-pencil-square mr-8 text-[#8e40ee] text-xl"></a>
                     </td>
                     <td>
-                        <a href="delete.php?id=<?= $task->id; ?>" class="bi bi bi-trash mr-4 text-red-500 text-xl"></a>
+                        <a href="/delete?id=<?= $task->id; ?>" class="bi bi bi-trash mr-4 text-red-500 text-xl"></a>
                     </td>
                 </tr>
             <?php

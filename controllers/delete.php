@@ -1,10 +1,8 @@
 <?php
-require_once __DIR__ . "./connect.php";
+$config = require "config.php";
+$db = new Database($config);
+
 $id = $_GET["id"];
+$db->deleteTask($id);
 
-
-$query = "DELETE FROM tasks WHERE id = ?";
-$statement = $pdo->prepare($query);
-$statement->execute([$id]);
-
-header('location: ./index.php');
+header('location: /');

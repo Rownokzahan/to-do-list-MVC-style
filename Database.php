@@ -83,4 +83,10 @@ class Database
             die();
         }
     }
+
+    public function deleteTask($id){
+        $query = "DELETE FROM tasks WHERE id = ?";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([$id]);
+    }
 }

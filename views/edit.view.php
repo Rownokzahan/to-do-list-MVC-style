@@ -2,7 +2,7 @@
 
 <h5 class="text-3xl font-semibold text-center">Update Task</h5>
 <!-- Update Form -->
-<form action="edit.php" method="POST" enctype="multipart/form-data" id="update-form">
+<form action="/edit" method="POST" enctype="multipart/form-data" id="update-form">
     <input type="hidden" value="<?= $task->id; ?>" name="id">
     <div class="form-control w-full mb-4">
         <label class="label">

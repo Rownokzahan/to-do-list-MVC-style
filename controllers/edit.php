@@ -1,20 +1,11 @@
 <?php
-require_once __DIR__ . "./connect.php";
 
-if(!empty($_GET)){
+$config = require "config.php";
+$db = new Database($config);
+
+if (!empty($_GET)) {
     $id = $_GET["id"];
-
-    try {
-        $query = "SELECT * FROM tasks WHERE id = :id";
-        $statement = $pdo->prepare($query);
-        $statement->bindValue('id', $id);
-        $statement->execute();
-    
-        $task = $statement->fetch(PDO::FETCH_OBJ);
-    } catch (PDOException $e) {
-        echo "Update failed: " . $e->getMessage();
-        die();
-    }
+    $task = $db->getTask($id);
 }
 
 if (!empty($_POST)) {
@@ -40,22 +31,9 @@ if (!empty($_POST)) {
 
     move_uploaded_file($file_tmp, $img_path);
 
-    try {
-        $query = "UPDATE tasks SET name = :name, attachment = :attachment, deadline = :deadline, status = :status WHERE id= :id";
-        $statement = $pdo->prepare($query);
-        $statement->bindValue('name', $name);
-        $statement->bindValue('attachment', $img_path);
-        $statement->bindValue('deadline', $deadline);
-        $statement->bindValue('status', $status);
-        $statement->bindValue('id', $id);
-        $statement->execute();
-        
-        var_dump($statement);
-    } catch (PDOException $e) {
-        echo "Update failed: " . $e->getMessage();
-        die();
-    }
-    header("Location: index.php");
+    $db->updateTask($name, $img_path, $deadline, $status, $id);
+
+    header("Location: /");
 }
 
 require_once __DIR__ . "./../views/edit.view.php";

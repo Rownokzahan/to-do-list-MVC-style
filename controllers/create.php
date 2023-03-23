@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . "./connect.php";
+
+$config = require "config.php";
+$db = new Database($config);
 
 if (!empty($_POST)) {
-    var_dump("hello");
     $name = $_POST["name"];
     $deadline = $_POST["deadline"];
 
@@ -23,19 +24,9 @@ if (!empty($_POST)) {
 
     move_uploaded_file($file_tmp, $img_path);
 
-    try {
-        $query = "INSERT INTO tasks (name ,attachment, deadline) VALUES (:name, :attachment, :deadline)";
-        $statement = $pdo->prepare($query);
-        $statement->bindValue('name', $name);
-        $statement->bindValue('attachment', $img_path);
-        $statement->bindValue('deadline', $deadline);
-        $statement->execute();
-    } catch (PDOException $e) {
-        echo "Insertion failed: " . $e->getMessage();
-        die();
-    }
+    $db->createTask($name, $img_path, $deadline);
 
-    header("Location: index.php");
+    header("Location: /");
 }
 
 require_once __DIR__ . "./../views/create.view.php";

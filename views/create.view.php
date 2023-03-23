@@ -2,7 +2,7 @@
 
 <h5 class="text-3xl text-center font-semibold">Create New Task</h5>
 <!-- Insert Form -->
-<form action="./create.php" method="POST" enctype="multipart/form-data">
+<form action="./create" method="POST" enctype="multipart/form-data">
     <div class="form-control w-full mb-4">
         <label class="label">
             <span class="label-text">Name</span>

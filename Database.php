@@ -84,9 +84,44 @@ class Database
         }
     }
 
-    public function deleteTask($id){
+    public function deleteTask($id)
+    {
         $query = "DELETE FROM tasks WHERE id = ?";
         $statement = $this->pdo->prepare($query);
         $statement->execute([$id]);
+    }
+
+    public function createUser($username, $email, $password)
+    {
+        try {
+            $query = "INSERT INTO users (name ,email, password) VALUES (:name, :email, :password)";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue('name', $username);
+            $statement->bindValue('email', $email);
+            $statement->bindValue('password', $password);
+            $statement->execute();
+
+            return;
+        } catch (PDOException $e) {
+            echo "Insertion failed: " . $e->getMessage();
+            die();
+        }
+    }
+
+    public function checkUser($username, $password)
+    {
+        try {
+            $query = "SELECT * FROM users WHERE name = :name AND password= :password";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue('name', $username);
+            $statement->bindValue('password', $password);
+            $statement->execute();
+
+            $user = $statement->fetch(PDO::FETCH_OBJ);
+            return !!$user;
+        } catch (PDOException $e) {
+            echo "Insertion failed: " . $e->getMessage();
+            die();
+        }
     }
 }

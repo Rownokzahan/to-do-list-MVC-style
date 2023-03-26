@@ -1,7 +1,7 @@
 <?php include_once __DIR__ . "./partials/header.php" ?>
 
 <div class="flex justify-between items-center pb-8">
-    <h1 class="text-center text-2xl font-semibold uppercase text-white">To Do List</h1>
+    <h1 class="text-center text-2xl font-semibold uppercase">To Do List</h1>
     <a href="/create" class="h-fit bg-[#8e40ee] px-5 py-[6px] text-white font-semibold rounded-xl shadow-md">New Task</a>
 </div>
 <div class="overflow-x-auto">

@@ -4,7 +4,9 @@ $routes = [
     '/' => "../controllers/index.php",
     '/create' => "../controllers/create.php",
     '/edit' => "../controllers/edit.php",
-    '/delete' => "../controllers/delete.php"
+    '/delete' => "../controllers/delete.php",
+    '/register' => "../controllers/register.php",
+    '/login' => "../controllers/login.php"
 ];
 
 $uri = $_SERVER["REQUEST_URI"];
@@ -23,7 +25,7 @@ function routeToControllers($url_path, $routes)
 function abort($code = 404)
 {
     http_response_code($code);
-    require "./views/$code.view.php";
+    require "../views/$code.view.php";
     die();
 }
 

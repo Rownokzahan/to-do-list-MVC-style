@@ -28,7 +28,7 @@
                         <?php echo $count; ?>
                     </th>
                     <td>
-                        <?php echo $task->name; ?>
+                        <?php echo htmlspecialchars($task->name) ;?>
                     </td>
                     <td><img src="<?php echo $task->attachment; ?>" class="w-12 h-12 rounded" alt=""></td>
                     <td>

@@ -1,6 +1,6 @@
 <?php
 
-$config = require "config.php";
+$config = require "../config.php";
 $db = new Database($config);
 
 if (!empty($_POST)) {
@@ -29,4 +29,4 @@ if (!empty($_POST)) {
     header("Location: /");
 }
 
-require_once __DIR__ . "./../views/create.view.php";
+require_once "../views/create.view.php";

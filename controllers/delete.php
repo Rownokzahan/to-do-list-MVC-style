@@ -1,5 +1,5 @@
 <?php
-$config = require "config.php";
+$config = require "../config.php";
 $db = new Database($config);
 
 $id = $_GET["id"];

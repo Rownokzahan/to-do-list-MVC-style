@@ -1,10 +1,10 @@
 <?php
 
 $routes = [
-    '/' => "./controllers/index.php",
-    '/create' => "./controllers/create.php",
-    '/edit' => "./controllers/edit.php",
-    '/delete' => "./controllers/delete.php"
+    '/' => "../controllers/index.php",
+    '/create' => "../controllers/create.php",
+    '/edit' => "../controllers/edit.php",
+    '/delete' => "../controllers/delete.php"
 ];
 
 $uri = $_SERVER["REQUEST_URI"];

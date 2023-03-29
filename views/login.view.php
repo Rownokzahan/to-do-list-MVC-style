@@ -5,9 +5,9 @@
 <form action="./login" method="POST" enctype="multipart/form-data">
     <div class="form-control w-full mb-4">
         <label class="label">
-            <span class="label-text">Username</span>
+            <span class="label-text">Username Or Email</span>
         </label>
-        <input type="text" name="username" placeholder="Username" class="input input-bordered w-full" required />
+        <input type="text" name="username-email" placeholder="Username or email" class="input input-bordered w-full" required />
     </div>
     <div class="form-control w-full mb-4">
         <label class="label">

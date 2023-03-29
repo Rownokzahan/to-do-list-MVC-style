@@ -4,15 +4,19 @@ $config = require "../config.php";
 $db = new Database($config);
 
 if (!empty($_POST)) {
-    $username = $_POST["username"];
+    $usernameOrEmail = $_POST["username-email"];
     $password = $_POST["password"];
 
-    $isUser = $db->checkUser($username, $password);
+    $user = $db->checkUser($usernameOrEmail);
 
-    if ($isUser) {
+    dd($user);
+    if(!$user){
+        dd("invalid user name or email");
+    }
+    elseif(!password_verify($_POST['password'], $user->password)){
+        dd("invalid password");
+    }else{
         header("Location: /");
-    } else {
-        echo "Invalid username or password";
     }
 }
 

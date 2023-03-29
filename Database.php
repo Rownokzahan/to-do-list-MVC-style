@@ -98,7 +98,7 @@ class Database
             $statement = $this->pdo->prepare($query);
             $statement->bindValue('name', $username);
             $statement->bindValue('email', $email);
-            $statement->bindValue('password', $password);
+            $statement->bindValue('password', password_hash($password, PASSWORD_BCRYPT));
             $statement->execute();
 
             return;
@@ -108,17 +108,17 @@ class Database
         }
     }
 
-    public function checkUser($username, $password)
+    public function checkUser($usernameOrEmail)
     {
         try {
-            $query = "SELECT * FROM users WHERE name = :name AND password= :password";
+            $query = "SELECT * FROM users WHERE name = :name OR email= :email";
             $statement = $this->pdo->prepare($query);
-            $statement->bindValue('name', $username);
-            $statement->bindValue('password', $password);
+            $statement->bindValue('name', $usernameOrEmail);
+            $statement->bindValue('email', $usernameOrEmail);
             $statement->execute();
 
             $user = $statement->fetch(PDO::FETCH_OBJ);
-            return !!$user;
+            return $user;
         } catch (PDOException $e) {
             echo "Insertion failed: " . $e->getMessage();
             die();

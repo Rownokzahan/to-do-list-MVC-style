@@ -3,6 +3,16 @@
 <h5 class="text-3xl text-center font-semibold">Sign Up</h5>
 <!-- Insert Form -->
 <form action="./register" method="POST" enctype="multipart/form-data">
+
+    <h3 class="text-xl text-center font-semibold text-red-400 mt-4">
+        <?php
+        if (!empty($_SESSION['signup_error_message'])) {
+            echo $_SESSION['signup_error_message'];
+        }
+        unset($_SESSION['signup_error_message']);
+        ?>
+    </h3>
+
     <div class="form-control w-full mb-4">
         <label class="label">
             <span class="label-text">Username</span>

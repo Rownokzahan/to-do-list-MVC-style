@@ -125,4 +125,19 @@ class Database
             die();
         }
     }
+
+    public function findEmail($email){
+        try {
+            $query = "SELECT * FROM users WHERE email= :email";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue('email', $email);
+            $statement->execute();
+
+            $result = $statement->fetch(PDO::FETCH_OBJ);
+            return !!$result;
+        } catch (PDOException $e) {
+            echo "Insertion failed: " . $e->getMessage();
+            die();
+        }
+    }
 }

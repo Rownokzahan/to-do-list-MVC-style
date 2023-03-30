@@ -4,9 +4,14 @@
 <!-- Insert Form -->
 <form action="./login" method="POST" enctype="multipart/form-data">
 
-<?php var_dump($_SESSION) ?>
-
-    <h3 class="text-xl text-center font-semibold text-red-400 mt-4"><?= isset($_SESSION['is_user_logged_in']) ? $_SESSION['login_error_message'] : '' ?></h3>
+    <h3 class="text-xl text-center font-semibold text-red-400 mt-4">
+        <?php
+            if(!empty($_SESSION['login_error_message'])){
+                echo $_SESSION['login_error_message'];
+            }
+            unset($_SESSION['login_error_message']);
+        ?>
+    </h3>
 
     <div class="form-control w-full mb-4">
         <label class="label">

@@ -9,9 +9,9 @@ if (!empty($_POST)) {
 
     $error_message = '';
 
-    if (empty($_POST['username_or_email'])) {
+    if (empty($usernameOrEmail)) {
         $error_message = 'Please enter username/email';
-    } elseif (empty($_POST['password'])) {
+    } elseif (empty($password)) {
         $error_message = 'Please enter password';
     } else {
         $user = $db->findUser($usernameOrEmail);
@@ -30,7 +30,9 @@ if (!empty($_POST)) {
         }
     }
 
-    $_SESSION['login_error_message'] = $error_message;
+    if(!empty($error_message)){
+        $_SESSION['login_error_message'] = $error_message;
+    }
 }
 
 

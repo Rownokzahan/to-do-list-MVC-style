@@ -98,7 +98,8 @@ class Database
             $statement = $this->pdo->prepare($query);
             $statement->bindValue('name', $username);
             $statement->bindValue('email', $email);
-            $statement->bindValue('password', password_hash($password, PASSWORD_BCRYPT));
+            // $statement->bindValue('password', password_hash($password, PASSWORD_BCRYPT));
+            $statement->bindValue('password', $password);
             $statement->execute();
 
             return;
@@ -108,7 +109,7 @@ class Database
         }
     }
 
-    public function checkUser($usernameOrEmail)
+    public function findUser($usernameOrEmail)
     {
         try {
             $query = "SELECT * FROM users WHERE name = :name OR email= :email";

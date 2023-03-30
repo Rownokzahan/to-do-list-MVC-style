@@ -6,7 +6,8 @@ $routes = [
     '/edit' => "../controllers/edit.php",
     '/delete' => "../controllers/delete.php",
     '/register' => "../controllers/register.php",
-    '/login' => "../controllers/login.php"
+    '/login' => "../controllers/login.php",
+    '/logout' => "../controllers/logout.php"
 ];
 
 $uri = $_SERVER["REQUEST_URI"];

@@ -25,7 +25,15 @@
                 </a>
             </div>
             <div class="flex-none">
-                <a href="/login" class="h-fit bg-primary px-5 py-[6px] text-white font-semibold rounded-xl shadow-md mr-8">Login</a>
+
+                <?php if (isset($_SESSION['is_user_logged_in']) && $_SESSION['is_user_logged_in'] === true) : ?>
+                    <p class="text-primary">Hello,<?php echo $_SESSION['logged_in_user_name'] ?? ''; ?>!</p>
+                    <a href="/logout" class="h-fit bg-primary px-5 py-[6px] text-white font-semibold rounded-xl shadow-md mx-8">Logout</a>
+                <?php else : ?>
+
+                    <a href="/login" class="h-fit bg-primary px-5 py-[6px] text-white font-semibold rounded-xl shadow-md mx-8">Login</a>
+                <?php endif; ?>
+
                 <label class="swap swap-rotate">
                     <!-- this hidden checkbox controls the state -->
                     <input type="checkbox" />

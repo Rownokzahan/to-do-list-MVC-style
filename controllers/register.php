@@ -8,15 +8,19 @@ if (!empty($_POST)) {
     $password = $_POST["password"];
 
     $error_message = '';
+
     if (empty($username)) {
         $error_message = 'Please enter username';
     }
+
     if (empty($email)) {
         $error_message = 'Please enter email';
     }
+
     if (empty($password)) {
         $error_message = 'Please enter password';
     }
+    
     if ($db->findEmail($email)) {
         $error_message = 'Email already exists';
     }

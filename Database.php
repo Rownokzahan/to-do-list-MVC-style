@@ -98,8 +98,7 @@ class Database
             $statement = $this->pdo->prepare($query);
             $statement->bindValue('name', $username);
             $statement->bindValue('email', $email);
-            // $statement->bindValue('password', password_hash($password, PASSWORD_BCRYPT));
-            $statement->bindValue('password', $password);
+            $statement->bindValue('password', password_hash($password, PASSWORD_BCRYPT));
             $statement->execute();
 
             return;
